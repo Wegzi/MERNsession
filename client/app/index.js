@@ -7,7 +7,6 @@ import { PrivateRoute } from './components/PrivateRoute';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Switch
 } from 'react-router-dom';
 
@@ -15,7 +14,7 @@ import App from './components/App/App';
 import NotFound from './components/App/NotFound';
 
 import Home from './components/Home/Home';
-import Login from './components/Auth/Login';
+import Autenticate from './components/Auth/Autenticate';
 
 import HelloWorld from './components/HelloWorld/HelloWorld';
 
@@ -26,7 +25,7 @@ render((
     <App>
       <Provider store={store} >
         <Switch>
-          <Route exact path="/" component={Login}/>
+          <Route exact path="/" component={Autenticate}/>
           <PrivateRoute path="/home" component={Home}/>
           <PrivateRoute path="/helloworld" component={HelloWorld}/>
           <Route component={NotFound}/>
