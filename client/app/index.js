@@ -14,7 +14,7 @@ import App from './components/App/App';
 import NotFound from './components/App/NotFound';
 
 import Home from './components/Home/Home';
-import Autenticate from './components/Auth/Autenticate';
+import teste from './components/Auth/teste';
 
 import HelloWorld from './components/HelloWorld/HelloWorld';
 
@@ -25,7 +25,7 @@ render((
     <App>
       <Provider store={store} >
         <Switch>
-          <Route exact path="/" component={Autenticate}/>
+          <Route exact path="/" component={teste}/>
           <PrivateRoute path="/home" component={Home}/>
           <PrivateRoute path="/helloworld" component={HelloWorld}/>
           <Route component={NotFound}/>
