@@ -1,18 +1,19 @@
 import {
-  LOGIN
+  SIGNIN
 } from '../actions/types';
 
 const initialState = {
-  isLoading: false,
-  account:[]
+  session: [],
+  loading: false
 }
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case LOGIN:
+    case SIGNIN:
       return {
         ...state,
-        account: [action.payload]
+        session: action.payload,
+        loading: false
       }
     default:
       return state;
