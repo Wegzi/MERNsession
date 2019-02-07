@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import 'whatwg-fetch';
-import { connect } from 'react-redux';
-import { signin } from '../../actions/loginActions';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import 'whatwg-fetch'
+import { connect } from 'react-redux'
+import { signin } from '../../actions/loginActions'
+import PropTypes from 'prop-types'
 import {
   getFromStorage,
   removeInStorage
-} from '../../utils/storage';
-import { Redirect } from 'react-router-dom';
+} from '../../utils/storage'
+import { Redirect } from 'react-router-dom'
 
 class ComponentLogout extends Component {
 
@@ -73,18 +73,21 @@ class ComponentLogout extends Component {
 
   render() {
     const {
-      token
+      token,
     } = this.state;
     if (token) {
       return (
-      <div>
-        <button className="btn btn-danger float-right" onClick={this.logout}>logout</button>
-      </div>
+        <button
+          className="btn btn-danger float-right"
+          onClick={this.logout}
+        >
+          logout
+        </button>
       )
     }
     return(
       <div>
-
+        <Redirect to='/home' />
       </div>
     )
   }
