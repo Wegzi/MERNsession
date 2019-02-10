@@ -2,14 +2,13 @@ import React, { Component } from 'react'
 import { signin } from '../../actions/loginActions'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
+import { setInStorage } from '../../utils/storage';
 
 class teste extends Component {
 
   state = {
     email: '',
-    password: '',
-    loading: '',
-    erro: ''
+    password: ''
   }
 
   onChangeEmail = e => {
@@ -24,17 +23,25 @@ class teste extends Component {
 
     const newLogin = {
       email: this.state.email,
-      password: this.state.password,
-      token: ''
+      password: this.state.password
     }
-
-    // Add session via signin action
     this.props.signin(newLogin)
 
   }
 
   render() {
-     const { session } = this.props.login
+
+    const { session } = this.props.login
+
+    if (session.token) {
+      console.log(session.token)
+      setInStorage('session', { token: session.token, email: this.state.email, nome: session.nome});
+      return(
+        <div>
+          logado
+        </div>
+      )
+    }
 
     return (
       <div>
@@ -46,8 +53,7 @@ class teste extends Component {
           onChange={this.onChangeEmail}
         />
         <input
-          type="text"
-          placeholder="senha"
+          type="password"
           name="password"
           onChange={this.onChangePassword}
         />

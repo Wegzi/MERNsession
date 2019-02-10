@@ -1,13 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getFromStorage } from '../../utils/storage'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
+import { getSession } from '../../actions/loginActions'
 
 class Header extends React.Component{
+
+  state = {
+    nome: '',
+    email: '',
+    token: ''
+  }
+
+  componentDidMount(){
+    this.props.getSession()
+  }
+
 
   render() {
     return (
       <header>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
@@ -30,5 +53,14 @@ class Header extends React.Component{
     )
   }
 }
+Header.propTypes = {
+  login: PropTypes.object.isRequired
+}
+const mapStateToProps = state => ({
+  login: state.login
+})
 
-export default Header;
+export default connect(
+  mapStateToProps,
+  { getSession }
+)(Header)

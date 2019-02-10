@@ -171,7 +171,7 @@ module.exports = (app) => {
         });
       } else {
         return res.send({
-          success: true,
+          verify: true,
           message: 'good'
         });
       }
