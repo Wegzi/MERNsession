@@ -1,6 +1,7 @@
 import {
   SIGNIN,
-  GET_SESSION
+  GET_SESSION,
+  LOGOUT
 } from '../actions/types';
 
 const initialState = {
@@ -17,6 +18,12 @@ export default function (state = initialState, action) {
         loading: false
       }
     case GET_SESSION:
+      return {
+        ...state,
+        session: action.payload,
+        loading: false
+      }
+    case LOGOUT:
       return {
         ...state,
         session: action.payload,

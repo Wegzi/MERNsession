@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getFromStorage } from '../../utils/storage'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 import { getSession } from '../../actions/loginActions'
+import { logout } from '../../actions/loginActions'
 
 class Header extends React.Component{
 
@@ -17,8 +17,14 @@ class Header extends React.Component{
     this.props.getSession()
   }
 
+  sair = e => {
+    e.preventDefault()
+    this.props.logout()
+  }
+
 
   render() {
+    const { session } = this.props.login
     return (
       <header>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -44,8 +50,16 @@ class Header extends React.Component{
               </li>
             </ul>
             <form className="form-inline my-2 my-lg-0">
-              <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              {
+                session.token ?
+                <button
+                  className="btn btn-danger my-2 my-sm-0"
+                  type="submit"
+                  onclick
+                  onClick={this.sair}
+                >Sair</button> :
+                null
+              }
             </form>
           </div>
         </nav>
@@ -62,5 +76,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getSession }
+  { getSession, logout }
 )(Header)

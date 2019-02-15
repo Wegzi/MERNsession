@@ -1,9 +1,10 @@
 import axios from 'axios';
 import {
   SIGNIN,
-  GET_SESSION
+  GET_SESSION,
+  LOGOUT
 } from './types';
-import { getFromStorage } from '../utils/storage'
+import { getFromStorage, removeInStorage } from '../utils/storage'
 
 export const signin = account => dispatch => {
   axios.post('api/account/signin', account)
@@ -37,9 +38,10 @@ export const getSession = () => dispatch => {
     })
   }
 }
-// export const signin = account => {
-//   return{
-//     type: LOGIN,
-//     payload: account
-//   }
-// };
+export const logout = () => {
+  removeInStorage('session')
+  return{
+    type: LOGOUT,
+    payload: {}
+  }
+};
