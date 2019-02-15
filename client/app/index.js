@@ -12,7 +12,8 @@ import {
 
 import App from './components/App/App';
 import NotFound from './components/App/NotFound';
-
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import teste from './components/Auth/teste';
 
@@ -24,12 +25,14 @@ render((
   <Router>
     <App>
       <Provider store={store} >
+        <Header />
         <Switch>
           <Route exact path="/" component={teste}/>
           <PrivateRoute path="/home" component={Home}/>
           <PrivateRoute path="/helloworld" component={HelloWorld}/>
           <Route component={NotFound}/>
         </Switch>
+      <Footer />
       </Provider>
     </App>
   </Router>
