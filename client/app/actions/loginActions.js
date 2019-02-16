@@ -18,7 +18,6 @@ export const signin = account => dispatch => {
 export const getSession = () => dispatch => {
 
   if (getFromStorage('session')) {
-    console.log('logado')
     const obj = getFromStorage('session')
     const { token } = obj
     if (obj && token) {

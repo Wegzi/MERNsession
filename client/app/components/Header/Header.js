@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 import { getSession } from '../../actions/loginActions'
 import { logout } from '../../actions/loginActions'
 
-class Header extends React.Component{
+class Header extends Component{
 
   state = {
     nome: '',
@@ -55,7 +55,6 @@ class Header extends React.Component{
                 <button
                   className="btn btn-danger my-2 my-sm-0"
                   type="submit"
-                  onclick
                   onClick={this.sair}
                 >Sair</button> :
                 null

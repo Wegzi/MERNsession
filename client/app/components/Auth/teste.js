@@ -3,6 +3,7 @@ import { signin } from '../../actions/loginActions'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 import { setInStorage } from '../../utils/storage';
+import { Redirect } from 'react-router-dom'
 
 class teste extends Component {
 
@@ -34,11 +35,10 @@ class teste extends Component {
     const { session } = this.props.login
 
     if (session.token) {
-      console.log(session.token)
       setInStorage('session', { token: session.token, email: this.state.email, nome: session.nome});
       return(
         <div>
-          logado
+          <Redirect to='/home' />
         </div>
       )
     }
